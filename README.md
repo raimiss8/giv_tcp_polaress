@@ -12,11 +12,13 @@ The basis of this project is a connection to the Modbus TCP server which runs on
 
 
 ## Docker
-You can find the Docker container repo here: https://hub.docker.com/repository/docker/britkat/giv_tcp-ma
-This will set up a self-running service which will publish data as required and provide a REST interface for control. An internal MQTT broker can be activiated to make data avalable on the network.
- 
-* Docker image is multi-architecture so docker should grab the correct version for your system (tested on x86 and rpi3)
-* Create a container with the relevant ENV variables below (mimicing the settings.py file)
+To run this as a standalone Docker container, you can build the image locally from the provided `Dockerfile`:
+```bash
+docker build -t raimiss8/giv_tcp_polaress .
+```
+This will set up a self-running service which will publish data as required and provide a REST interface for control. An internal MQTT broker can be activated to make data available on the network.
+
+* Create a container with the relevant ENV variables below (mimicking the settings.py file)
 * Set the container to auto-restart to ensure reliability
 * Out of the box the default setup enables local MQTT broker and REST service (see below for details)
 * Configuration via ENV as outlined below
