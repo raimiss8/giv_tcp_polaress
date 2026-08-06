@@ -1,11 +1,14 @@
-# GivTCP
-## TCP Modbus connection to MQTT/JSON for GivEnergy Battery/PV Invertors
+# GivTCP (Polar ESS Edition)
+## TCP Modbus connection to MQTT/JSON for Polar ESS & GivEnergy Battery/PV Invertors
 
-This project opens a connection to the GivEnergy invertors via TCP Modbus. Access is given through the native Wifi/Ethernet dongle and can be connected via either LAN or directly through the inbuilt SSID AP.
+This is a customized fork of GivTCP modified to support **Polar ESS** hybrid inverters (e.g., ALPS HY3.6-GL) by allowing local TCP Modbus communication over customizable ports (defaulting to `7654` instead of `8899`). 
+
+Access is given through the native Wifi/Ethernet dongle (which must be configured in TCP Server mode on port 7654) and can be connected via either LAN or directly through the inbuilt SSID AP.
 
 The basis of this project is a connection to the Modbus TCP server which runs on the wifi dongle. All you need is run the script on the same network. The following is needed to make it work:
-* GivEnergy Invertor that is commissioned and online.
+* Invertor that is commissioned and online.
 * IP address of the invertor
+* Port of the invertor (default `7654` for Polar ESS)
 
 
 ## Docker
@@ -23,9 +26,10 @@ Installation via the docker-compose.yml file is recommended if not running throu
 ## Home Assistant Add-on
 This container can also be used as an add-on in Home Assistant.
 The add-on requires an existing MQTT broker such as Mosquito, also available to install from the Add-on store.
-To install GivTCP as an add-on, add this repository (https://github.com/britkat1980/giv_tcp) to the Add-on Store repository list.
+To install GivTCP as an add-on, add this repository (https://github.com/raimiss8/giv_tcp_polaress) to the Add-on Store repository list.
 The following configuration items are mandatory before the add-on can be started:
 * Inverter IP address
+* Inverter Port (7654 for Polar ESS)
 * MQTT username (can also be a Home Assistant user - used to authenticate againt your MQTT broker)
 * MQTT password
 All other configuration items can be left as-is unless you need to change them. See the ENV below for full details
@@ -39,11 +43,14 @@ This will populate HA with all devices and entities for control and monitoring. 
 | ENV Name                | Example       |  Description                      |
 | ----------------------- | ------------- |  -------------------------------- |
 | NUMINVERTORS | 1 | Number of inverters on the network. Max inverters supprted is three |
-| INVERTOR_IP_1 |192.168.10.1 | IP Address of your first inverter  |
+| INVERTOR_IP_1 |192.168.0.180 | IP Address of your first inverter  |
+| INVERTOR_PORT_1 |7654 | TCP Port of your first inverter (7654 for Polar ESS) |
 | NUMBATTERIES_1 | 1 | Number of battery units connected to the first inverter |
 | INVERTOR_IP_2 |192.168.10.1 | Optional - IP Address of your second inverter |
+| INVERTOR_PORT_2 |7654 | Optional - TCP Port of your second inverter |
 | NUMBATTERIES_2 | 1 | Optional - Number of battery units connected to the second inverter |
 | INVERTOR_IP_3 |192.168.10.1 | Optional - IP Address of your third inverter |
+| INVERTOR_PORT_3 |7654 | Optional - TCP Port of your third inverter |
 | NUMBATTERIES_3 | 1 | Optional - Number of battery units connected to the third inverter |
 | MQTT_OUTPUT | True | Optional if set to True then MQTT_ADDRESS is required |
 | MQTT_ADDRESS | 127.0.0.1 | Optional (but required if OUTPUT is set to MQTT) |
