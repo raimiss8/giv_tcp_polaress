@@ -1,0 +1,23 @@
+# Task List - Polar ESS GivTCP Conversion
+
+- [x] Phase 1: Prepare Development Environment
+  - [x] Clone latest upstream GivTCP repository
+  - [x] Initialize local development branch
+- [x] Phase 2: Restore Communication
+  - [x] Locate every port/network configuration in GivTCP
+  - [x] Add support/configuration for port 7654
+  - [x] Test connectivity to target inverter IP
+  - [x] Capture successful request/response packets
+- [x] Phase 3: Analyze Communication & Protocol
+  - [x] Compare responses with standard GivEnergy/Modbus formats
+  - [x] Identify register ranges and decode patterns
+- [x] Phase 4: Build Polar ESS / Port Support
+  - [x] Add INVERTOR_PORT settings to startup.py and settings template
+  - [x] Update GivTCP/write.py, GivTCP/GivLUT.py, and givenergy_modbus/modbus.py
+  - [x] Update config.yaml and docker-compose.yml for HA addon and Docker usage
+- [x] Phase 5: Home Assistant Integration
+  - [x] Verify sensor compatibility (confirmed via registers match)
+- [x] Phase 6: Docker
+  - [x] Verify Docker settings and compose configurations
+- [x] Phase 7: GitHub
+  - [x] Verify local git changes are ready to commit
