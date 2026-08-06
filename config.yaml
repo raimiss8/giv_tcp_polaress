@@ -1,5 +1,5 @@
-name:  "GivTCP"
-description:  "TCP Modbus connection to MQTT/JSON for Givenergy Battery/PV Invertors"
+name:  "GivTCP (Polar ESS)"
+description:  "TCP Modbus connection to MQTT/JSON for Polar ESS & GivEnergy Battery/PV Invertors"
 version:  "2.2.3"
 image: britkat/giv_tcp-ma
 slug:  "givtcp"
@@ -11,7 +11,7 @@ services:
 map:
   - config:rw
 boot:  auto
-url:  https://github.com/britkat1980/giv_tcp
+url:  https://github.com/raimiss8/giv_tcp_polaress
 legacy:  true
 arch: 
   - aarch64
