@@ -1,7 +1,6 @@
 name:  "GivTCP (Polar ESS)"
 description:  "TCP Modbus connection to MQTT/JSON for Polar ESS & GivEnergy Battery/PV Invertors"
 version:  "2.2.3"
-image: britkat/giv_tcp-ma
 slug:  "givtcp_polar"
 homeassistant_api: true
 hassio_api: true
